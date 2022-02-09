@@ -14,7 +14,7 @@ public class HomeController {
 
     @GetMapping("/v1/GetEmployee")
 	public String GetEmployee() {
-		return "Get Employee List";
+		return "Get Employee List Oauth2";
 	}
 
 
