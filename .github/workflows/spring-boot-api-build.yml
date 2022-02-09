@@ -7,7 +7,7 @@ on:
     branches: [ main ]
 
 env:
-  PACKAGE_PATH: './spring-boot-vendor-rating-api/target/VendorRatingAPI-0.0.1-SNAPSHOT.jar'
+  PACKAGE_PATH: './target/VendorRatingAPI-0.0.1-SNAPSHOT.jar'
   JAVA_VERSION: '8'
 
 jobs:
