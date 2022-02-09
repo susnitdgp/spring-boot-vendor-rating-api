@@ -28,4 +28,10 @@ jobs:
           cache: 'maven'
 
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn clean package
+    
+    - name: Publish Artifacts
+      uses: actions/upload-artifact@v2
+      with:
+        name: Spring Boot API-Executable Jar
+        path: ${{env.PACKAGE_PATH}}
