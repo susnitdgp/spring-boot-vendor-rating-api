@@ -23,6 +23,7 @@ jobs:
     - name: Setup "Setup Java Environment"
       uses: actions/setup-java@v2
       with:
+          distribution: 'zulu'
           java-version: '8'
           cache: 'maven'
 
