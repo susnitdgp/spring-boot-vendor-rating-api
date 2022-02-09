@@ -1,0 +1,7 @@
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: https://sts.windows.net/112f2dfc-b078-4610-b12a-09ab93a6c933/
+          jwk-set-uri: https://login.microsoftonline.com/azuregoswami.com/discovery/v2.0/keys
