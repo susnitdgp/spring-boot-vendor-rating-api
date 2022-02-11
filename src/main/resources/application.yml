@@ -1,3 +1,6 @@
+auth:
+  audience: api://581c4b1d-c860-48a1-b57f-c4ac499338ef
+
 spring:
   security:
     oauth2:
