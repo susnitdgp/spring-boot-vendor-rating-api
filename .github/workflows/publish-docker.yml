@@ -13,7 +13,7 @@ on:
 
 jobs:
   push_to_registries:
-  if: ${{ false }}  # disable for now
+    if: ${{ false }}  # disable for now
     name: Push Docker image to multiple registries
     runs-on: ubuntu-latest
     permissions:
