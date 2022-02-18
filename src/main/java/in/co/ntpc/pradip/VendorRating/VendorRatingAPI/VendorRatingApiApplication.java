@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class VendorRatingApiApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(VendorRatingApiApplication.class, args);
 	}
 

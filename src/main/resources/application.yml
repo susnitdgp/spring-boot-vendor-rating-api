@@ -1,10 +1,43 @@
+# Logger Configuration
+logging:
+  level:
+    root: INFO
+# embedded server configuration
+server:
+  servlet:
+    context-path : /VendorAPI
+
 auth:
   audience: api://581c4b1d-c860-48a1-b57f-c4ac499338ef
 
 spring:
+  main:
+    banner-mode: off
   security:
     oauth2:
       resourceserver:
         jwt:
           issuer-uri: https://sts.windows.net/112f2dfc-b078-4610-b12a-09ab93a6c933/
           jwk-set-uri: https://login.microsoftonline.com/azuregoswami.com/discovery/v2.0/keys?appid=d923d979-d308-4de8-b939-4ce0435521c6
+# Set here configurations for the database connection
+  datasource:
+    url: jdbc:db2://10.3.0.94:50000/PCOMMON
+    username: pcuser1
+    password: Dev@pcm543
+    driver-class-name: com.ibm.db2.jcc.DB2Driver
+    validationQuery: SELECT 1
+
+# = JPA / HIBERNATE
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.DB2Dialect
+# Naming strategy
+    hibernate:
+      ddl-auto: none
+      naming:
+        implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyHbmImpl
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+
