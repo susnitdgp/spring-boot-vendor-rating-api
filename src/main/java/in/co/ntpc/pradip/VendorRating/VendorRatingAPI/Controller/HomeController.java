@@ -1,7 +1,6 @@
 package in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Controller;
 
-import in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Exception.ProjectNotFoundException;
-
+import in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Exception.CustomException;
 import in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Model.Employee;
 import in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Service.ProjectService;
 import in.co.ntpc.pradip.VendorRating.VendorRatingAPI.Domain.ProjectDetails;
@@ -63,7 +62,7 @@ public class HomeController {
 	@GetMapping("/v1/ExceptionTest")
 	@CrossOrigin(origins = "https://react-7cuyla.stackblitz.io/")
 	public String createException(){
-		throw new ProjectNotFoundException();
+		throw new CustomException("Error");
 	}
 
 	@PostMapping("/v1/saveProject")
@@ -77,6 +76,7 @@ public class HomeController {
 		return new ResponseEntity<ProjectDetails>(project,HttpStatus.OK);
 
 	}
+
 
 
 }

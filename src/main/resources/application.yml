@@ -4,8 +4,42 @@ logging:
     root: INFO
 # embedded server configuration
 server:
+  port: ${NOMAD_HOST_PORT_http:8091}
   servlet:
     context-path : /VendorAPI
+
+# Resilience4j configuration , Retry, Exponential Backoff, Circuit Breaker, Rate Limiter, Timelimiter, Bulkhead
+resilience4j:
+  retry:
+    instances:
+      smsSender:
+        maxRetryAttempts: 2
+        waitDuration: 2s
+        # Exponential backoff strategy
+        #enable-exponential-backoff: true
+        #exponential-backoff-multiplier: 2
+        # Conditional Retry on Exception
+        #retry-exceptions:
+        #-org.springframework.web.client.RestClientException
+        #ignore-exceptions:
+        #-com.amrut.prabhu.IgnoreException
+  #circuitbreaker:
+  #  instances:
+  #    myCircuitBreaker:
+  #      wait-duration-in-open-state: 1m
+  #      permitted-number-of-calls-in-half-open-state: 3
+  #      sliding-window-type: count-based
+  #      sliding-window-size: 5
+  #      minimum-number-of-calls: 5
+  #      slow-call-duration-threshold: 10s
+  #      slow-call-rate-threshold: 60
+  #      failure-rate-threshold: 60
+  ratelimiter:
+    instances:
+      basic_rate_limiter:
+        limitForPeriod: 2
+        limitRefreshPeriod: 5s
+        timeoutDuration: 2s
 
 auth:
   audience: api://581c4b1d-c860-48a1-b57f-c4ac499338ef
@@ -27,9 +61,10 @@ spring:
     driver-class-name: com.ibm.db2.jcc.DB2Driver
     validationQuery: SELECT 1
 
-# = JPA / HIBERNATE
+# JPA / HIBERNATE Configuration
   jpa:
     show-sql: true
+    open-in-view: false
     properties:
       hibernate:
         format_sql: true
